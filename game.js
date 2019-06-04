@@ -25,7 +25,7 @@ window.onload = function () {
   var buttons = function () {
     myButtons = document.getElementById('buttons');
     letters = document.createElement('ul');
-
+     myButtons.innerHTML="";
     for (var i = 0; i < alphabet.length; i++) {
       letters.id = 'alphabet';
       list = document.createElement('li');
@@ -104,7 +104,7 @@ check = function () {
   }
   
 
-  play = function () {
+function play () {
     categories = [
         
         ["harry-potter", "aladdin", "forrest-gump", "gladiator", "titanic"],
@@ -114,12 +114,14 @@ check = function () {
     word = chosenCategory[Math.floor(Math.random() * chosenCategory.length)];
     word = word.replace(/\s/g, "-");
     console.log(word);
-    buttons();
+  
 
     guesses = [ ];
     lives = 10;
     counter = 0;
     space = 0;
+    buttons();
+    selectCat();
     result();
     comments();
     selectCat();
@@ -133,7 +135,7 @@ check = function () {
     hint.onclick = function() {
 
       hints = [
-        ["The school of magic", "A poor street urchin who spends his time stealing food from the marketplace in the city of Agrabah", "Famous movie with Tom Hanksgladiator", "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery", "British passenger liner that sank in the North Atlantic Ocean in 1912 after the ship struck an iceberg" ],
+        ["The school of magic", "A poor street urchin who spends his time stealing food from the marketplace in the city of Agrabah", "Famous movie with Tom Hanks", "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery", "British passenger liner that sank in the North Atlantic Ocean in 1912 after the ship struck an iceberg" ],
         ["Matryoshka is the famous toy", "Pasta, Cheese, Coliseum","Carnival", "Che Guevara, Maradona, Tango", "The great wall 8,850 km long"]
 ];
     var catagoryIndex = categories.indexOf(chosenCategory);
@@ -142,11 +144,7 @@ check = function () {
   };
 
 
-  document.getElementById('reset').onclick = function() {
-    correct.parentNode.removeChild(correct);
-    letters.parentNode.removeChild(letters);
-    showClue.innerHTML = "";
-    context.clearRect(0, 0, 300, 300);
+  reset.onclick = function() {
     play();
   }
 }
